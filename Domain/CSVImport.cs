@@ -44,11 +44,11 @@ namespace DataAccess
             bool tryParse = float.TryParse(toParse.Replace('.', ','), out number);
             return number;
         }
-        public void ImportOffers(string filepath)
+        public void ImportOffers(string filePath)
         {
             try
             {
-                var data = File.ReadAllLines(filepath, encoding)
+                var data = File.ReadAllLines(filePath, encoding)
            .Skip(1)
            .Select(x => x.Split(';'))
            .Select(x => new Offer
