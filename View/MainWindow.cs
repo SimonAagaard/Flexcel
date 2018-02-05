@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace View
 {
-    public class MainWindowViewModel
+    public class MainWindow
     {
         IOController iOController;
         SelectionController selectionController;
@@ -14,7 +14,7 @@ namespace View
         public bool ImportDone { get; set; }
         public bool SelectionDone { get; set; }
 
-        public MainWindowViewModel()
+        public MainWindow()
         {
             iOController = new IOController();
             selectionController = new SelectionController();

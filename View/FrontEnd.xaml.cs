@@ -10,22 +10,22 @@ namespace View
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class FrontEnd : Window
     {
-        MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();
+        MainWindow mainWindow = new MainWindow();
 
-        public MainWindow()
+        public FrontEnd()
         {
             InitializeComponent();
         }
 
         private void BtnMasterDataFilePathSelect_Click(object sender, RoutedEventArgs e)
         {
-            txtBoxFilePathMasterData.Text = mainWindowViewModel.ChooseCSVFile();
+            txtBoxFilePathMasterData.Text = mainWindow.ChooseCSVFile();
         }
         private void BtnRouteNumberFilePathSelect_Click(object sender, RoutedEventArgs e)
         {
-            txtBoxFilePathRouteNumberOffer.Text = mainWindowViewModel.ChooseCSVFile();
+            txtBoxFilePathRouteNumberOffer.Text = mainWindow.ChooseCSVFile();
         }
         private void BtnImport_Click(object sender, RoutedEventArgs e)
         {
@@ -41,9 +41,9 @@ namespace View
                 }
                 else
                 {
-                    mainWindowViewModel.ImportCSV(txtBoxFilePathMasterData.Text.ToString(), txtBoxFilePathRouteNumberOffer.Text.ToString());
+                    mainWindow.ImportCSV(txtBoxFilePathMasterData.Text.ToString(), txtBoxFilePathRouteNumberOffer.Text.ToString());
                     MessageBox.Show("Filerne er nu importeret");
-                    mainWindowViewModel.ImportDone = true;
+                    mainWindow.ImportDone = true;
                 }
             }
             catch (Exception x)
@@ -56,7 +56,7 @@ namespace View
         {
             try
             {
-                mainWindowViewModel.InitializeSelection();
+                mainWindow.InitializeSelection();
                 ListContainer listContainer = ListContainer.GetInstance();
                 List<Offer> outputListByUserID = listContainer.outputList.OrderBy(x => x.UserID).ToList();
                 listView.ItemsSource = outputListByUserID;
@@ -83,7 +83,7 @@ namespace View
         {
             try
             {
-                mainWindowViewModel.SaveCSVPublishFile();
+                mainWindow.SaveCSVPublishFile();
             }
             catch (Exception x)
             {
@@ -95,7 +95,7 @@ namespace View
         {
             try
             {
-                mainWindowViewModel.SaveCSVCallFile();
+                mainWindow.SaveCSVCallFile();
             }          
             catch (Exception x)
             {
