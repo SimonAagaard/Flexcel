@@ -68,10 +68,6 @@
     <Compile Include="SelectionController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
-      <Project>{87bfec53-dd5b-40de-a4ca-062a3de8ed3d}</Project>
-      <Name>DataAccess</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{8abbe5db-6e9a-4ff5-8879-28e629d1812e}</Project>
       <Name>Domain</Name>

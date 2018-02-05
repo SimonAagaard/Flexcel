@@ -67,6 +67,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contractor.cs" />
+    <Compile Include="CSVExportToCallList.cs" />
+    <Compile Include="CSVExportToPublishList.cs" />
+    <Compile Include="CSVImport.cs" />
     <Compile Include="ListContainer.cs" />
     <Compile Include="Offer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
