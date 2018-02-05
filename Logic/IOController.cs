@@ -24,12 +24,12 @@ namespace Logic
             CSVExportToCallList ExportCallList = new CSVExportToCallList(filePath);
             ExportCallList.CreateFile();
         }
-        public void InitializeImport(string masterDatafilePath, string routeNumberfilePath)
+        public void InitializeImport(string masterDataFilePath, string routeNumberFilePath)
         {
             CSVImport csvImport = new CSVImport();
-            csvImport.ImportContractors(masterDatafilePath);
+            csvImport.ImportContractors(masterDataFilePath);
             csvImport.ImportRouteNumbers();
-            csvImport.ImportOffers(routeNumberfilePath);
+            csvImport.ImportOffers(routeNumberFilePath);
             contractorList = csvImport.SendContractorListToContainer();
             routeNumberList = csvImport.SendRouteNumberListToContainer();
             ListContainer listContainer = ListContainer.GetInstance();
