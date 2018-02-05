@@ -110,8 +110,8 @@ namespace DataAccess
         {
             try
             {
-                string filepath = Environment.ExpandEnvironmentVariables("RouteNumbers.csv");
-                var data = File.ReadAllLines(filepath, encoding)
+                string filePath = Environment.ExpandEnvironmentVariables("RouteNumbers.csv");
+                var data = File.ReadAllLines(filePath, encoding)
                 .Skip(1)
                 .Select(x => x.Split(';'))
                 .Select(x => new RouteNumber
@@ -145,11 +145,11 @@ namespace DataAccess
                 throw new Exception("Fejl, filerne blev ikke importeret");
             }
         }
-        public void ImportContractors(string filepath)
+        public void ImportContractors(string filePath)
         {
             try
             {
-                var data = File.ReadAllLines(filepath, encoding)
+                var data = File.ReadAllLines(filePath, encoding)
                   .Skip(1)
                   .Select(x => x.Split(';'))
                   .Select(x => new Contractor
