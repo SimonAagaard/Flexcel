@@ -78,11 +78,11 @@ namespace Domain
         public List<Offer> ReturnIneligibleOffers()
         {
             List<Offer> InEligibleOffersToReturn = new List<Offer>();
-            foreach (Offer offer in winningOffers)
+            foreach (Offer Offer in winningOffers)
             {
-                if (!offer.IsEligible)
+                if (!Offer.IsEligible)
                 {
-                    InEligibleOffersToReturn.Add(offer);
+                    InEligibleOffersToReturn.Add(Offer);
                 }
             }
             return InEligibleOffersToReturn;
@@ -90,25 +90,25 @@ namespace Domain
         public void RemoveIneligibleOffersFromWinningOffers()
         {
             List<Offer> toBeRemoved = new List<Offer>();
-            foreach (Offer offer in winningOffers)
+            foreach (Offer Offer in winningOffers)
             {
-                if (!offer.IsEligible)
+                if (!Offer.IsEligible)
                 {
-                    ineligibleOffers.Add(offer);
-                    toBeRemoved.Add(offer);
+                    ineligibleOffers.Add(Offer);
+                    toBeRemoved.Add(Offer);
                 }
             }
             if (toBeRemoved.Count > 0)
             {
-                foreach (Offer offer in toBeRemoved)
+                foreach (Offer Offer in toBeRemoved)
                 {
-                    winningOffers.Remove(offer);
+                    winningOffers.Remove(Offer);
                 }
             }
         }         
         public List<Offer> CompareNumberOfWonOffersAgainstVehicles()
         {
-            List<Offer> offersWithConflict = new List<Offer>();
+            List<Offer> OffersWithConflict = new List<Offer>();
             type2 = 0;
             type3 = 0;
             type5 = 0;
@@ -116,27 +116,27 @@ namespace Domain
             type7 = 0;
             if (winningOffers.Count > 0)
             {
-                foreach (Offer offer in winningOffers)
+                foreach (Offer Offer in winningOffers)
                 {
-                    if (offer.IsEligible)
+                    if (Offer.IsEligible)
                     {
-                        if (offer.RequiredVehicleType == 2)
+                        if (Offer.RequiredVehicleType == 2)
                         {
                             type2++;
                         }
-                        if (offer.RequiredVehicleType == 3)
+                        if (Offer.RequiredVehicleType == 3)
                         {
                             type3++;
                         }
-                        if (offer.RequiredVehicleType == 5)
+                        if (Offer.RequiredVehicleType == 5)
                         {
                             type5++;
                         }
-                        if (offer.RequiredVehicleType == 6)
+                        if (Offer.RequiredVehicleType == 6)
                         {
                             type6++;
                         }
-                        if (offer.RequiredVehicleType == 7)
+                        if (Offer.RequiredVehicleType == 7)
                         {
                             type7++;
                         }
@@ -151,40 +151,40 @@ namespace Domain
                 }
                 else
                 {
-                    foreach (Offer ofr in IfTooManyWonOffers(NumberOfType2PledgedVehicles, type2, 2))
+                    foreach (Offer Offer in IfTooManyWonOffers(NumberOfType2PledgedVehicles, type2, 2))
                     {
-                        offersWithConflict.Add(ofr);
+                        OffersWithConflict.Add(Offer);
                     }
-                    foreach (Offer ofr in IfTooManyWonOffers(NumberOfType3PledgedVehicles, type3, 3))
+                    foreach (Offer Offer in IfTooManyWonOffers(NumberOfType3PledgedVehicles, type3, 3))
                     {
-                        offersWithConflict.Add(ofr);
+                        OffersWithConflict.Add(Offer);
                     }
-                    foreach (Offer ofr in IfTooManyWonOffers(NumberOfType5PledgedVehicles, type5, 5))
+                    foreach (Offer Offer in IfTooManyWonOffers(NumberOfType5PledgedVehicles, type5, 5))
                     {
-                        offersWithConflict.Add(ofr);
+                        OffersWithConflict.Add(Offer);
                     }
-                    foreach (Offer ofr in IfTooManyWonOffers(NumberOfType6PledgedVehicles, type6, 6))
+                    foreach (Offer Offer in IfTooManyWonOffers(NumberOfType6PledgedVehicles, type6, 6))
                     {
-                        offersWithConflict.Add(ofr);
+                        OffersWithConflict.Add(Offer);
                     }
-                    foreach (Offer ofr in IfTooManyWonOffers(NumberOfType7PledgedVehicles, type7, 7))
+                    foreach (Offer Offer in IfTooManyWonOffers(NumberOfType7PledgedVehicles, type7, 7))
                     {
-                        offersWithConflict.Add(ofr);
+                        OffersWithConflict.Add(Offer);
                     }
                 }
             }
 
-            return offersWithConflict;
+            return OffersWithConflict;
         }
         private List<Offer> IfTooManyWonOffers(int numberOfPledgedVehicles, int numberOfWonOffersWithThisType, int type)
         {
-            List<Offer> offersToCheck = new List<Offer>();
+            List<Offer> OffersToCheck = new List<Offer>();
             List<Offer> listOfOffersToReturn = new List<Offer>();
             foreach (Offer winningOffer in winningOffers)
             {
                 if (winningOffer.IsEligible && winningOffer.RequiredVehicleType == type)
                 {
-                    offersToCheck.Add(winningOffer);
+                    OffersToCheck.Add(winningOffer);
                 }
             }
 
@@ -193,78 +193,78 @@ namespace Domain
             {
                 if (numberOfPledgedVehicles == 0) //This is done because, sometimes contractors place bids on routenumbers, they don't have the correct vehicle type for. 
                 {
-                    foreach (Offer offer in winningOffers)
+                    foreach (Offer Offer in winningOffers)
                     {
-                        if (offer.RequiredVehicleType == type)
+                        if (Offer.RequiredVehicleType == type)
                         {
-                            offer.IsEligible = false;
+                            Offer.IsEligible = false;
                         }
                     }
                 }
                 else
                 {
-                    listOfOffersToReturn = FindOptimalWins(offersToCheck, numberOfPledgedVehicles);
+                    listOfOffersToReturn = FindOptimalWins(OffersToCheck, numberOfPledgedVehicles);
                 }
             }
 
             return listOfOffersToReturn;
         }
-        private List<Offer> FindOptimalWins(List<Offer> offersToCheck, int numberOfPledgedVehicles)
+        private List<Offer> FindOptimalWins(List<Offer> OffersToCheck, int numberOfPledgedVehicles)
         {
-            List<Offer> offersWithConflict = new List<Offer>();
-            List<Offer> offersToChooseFrom = offersToCheck.OrderByDescending(x => x.DifferenceToNextOffer).ThenBy(x => x.ContractorPriority).ToList();
+            List<Offer> OffersWithConflict = new List<Offer>();
+            List<Offer> OffersToChooseFrom = OffersToCheck.OrderByDescending(x => x.DifferenceToNextOffer).ThenBy(x => x.ContractorPriority).ToList();
 
-            foreach (Offer offer in offersToChooseFrom)
+            foreach (Offer Offer in OffersToChooseFrom)
             {
-                if (offer.DifferenceToNextOffer >= offersToChooseFrom[numberOfPledgedVehicles - 1].DifferenceToNextOffer)
+                if (Offer.DifferenceToNextOffer >= OffersToChooseFrom[numberOfPledgedVehicles - 1].DifferenceToNextOffer)
                 {
-                    offer.IsEligible = true;
+                    Offer.IsEligible = true;
                 }
                 else
                 {
-                    offer.IsEligible = false;
+                    Offer.IsEligible = false;
                 }
             }
           
             int eligibleOffers = 0;
-            foreach (Offer offer in offersToChooseFrom)
+            foreach (Offer Offer in OffersToChooseFrom)
             {
-                if (offer.IsEligible)
+                if (Offer.IsEligible)
                 {
                     eligibleOffers++;
                 }
             }
             if (eligibleOffers > numberOfPledgedVehicles)
             {              
-                if (offersToChooseFrom[numberOfPledgedVehicles - 1].ContractorPriority != offersToChooseFrom[numberOfPledgedVehicles].ContractorPriority)
+                if (OffersToChooseFrom[numberOfPledgedVehicles - 1].ContractorPriority != OffersToChooseFrom[numberOfPledgedVehicles].ContractorPriority)
                 {
-                    int length = offersToCheck.Count;
+                    int length = OffersToCheck.Count;
               
                     for (int i = numberOfPledgedVehicles; i < length; i++)
                     {
-                        if (offersToChooseFrom[i].DifferenceToNextOffer == offersToChooseFrom[numberOfPledgedVehicles - 1].DifferenceToNextOffer)
+                        if (OffersToChooseFrom[i].DifferenceToNextOffer == OffersToChooseFrom[numberOfPledgedVehicles - 1].DifferenceToNextOffer)
                         {
-                            offersToChooseFrom[i].IsEligible = false;
+                            OffersToChooseFrom[i].IsEligible = false;
                         }
                     }
                 }
                 else
                 {
-                    foreach (Offer offer in offersToChooseFrom)
+                    foreach (Offer Offer in OffersToChooseFrom)
                     {
-                        if (offer.DifferenceToNextOffer == offersToChooseFrom[numberOfPledgedVehicles-1].DifferenceToNextOffer && offer.IsEligible)
+                        if (Offer.DifferenceToNextOffer == OffersToChooseFrom[numberOfPledgedVehicles-1].DifferenceToNextOffer && Offer.IsEligible)
                         {
-                            offersWithConflict.Add(offer);
+                            OffersWithConflict.Add(Offer);
                         }
                     }
-                    if (offersWithConflict.Count == 1)
+                    if (OffersWithConflict.Count == 1)
                     {
-                        offersWithConflict.Clear();
+                        OffersWithConflict.Clear();
                     }
                 }
                               
             }
-            return offersWithConflict;
+            return OffersWithConflict;
         }
         public void CountNumberOfWonOffersOfEachType(List<Offer> outPutList)
         {
@@ -275,27 +275,27 @@ namespace Domain
             NumberOfWonType7Offers = 0;
 
 
-            foreach (Offer offer in outPutList)
+            foreach (Offer Offer in outPutList)
             {
-                if (offer.UserID == UserID)
+                if (Offer.UserID == UserID)
                 {
-                    if (offer.RequiredVehicleType == 2)
+                    if (Offer.RequiredVehicleType == 2)
                     {
                         NumberOfWonType2Offers++;
                     }
-                    if (offer.RequiredVehicleType == 3)
+                    if (Offer.RequiredVehicleType == 3)
                     {
                         NumberOfWonType3Offers++;
                     }
-                    if (offer.RequiredVehicleType == 5)
+                    if (Offer.RequiredVehicleType == 5)
                     {
                         NumberOfWonType5Offers++;
                     }
-                    if (offer.RequiredVehicleType == 6)
+                    if (Offer.RequiredVehicleType == 6)
                     {
                         NumberOfWonType6Offers++;
                     }
-                    if (offer.RequiredVehicleType == 7)
+                    if (Offer.RequiredVehicleType == 7)
                     {
                         NumberOfWonType7Offers++;
                     }
