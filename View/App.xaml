@@ -9,7 +9,7 @@
             <Setter Property="ResizeMode"
                     Value="NoResize"></Setter>
             <Setter Property="Height"
-                    Value="280"></Setter>
+                    Value="280"></Setter> 
             <Setter Property="Width"
                     Value="520"></Setter>
             <Setter Property="Background"
