@@ -61,7 +61,7 @@ namespace DataAccess
                UserID = x[5],
                CreateRouteNumberPriority = x[6],
                CreateContractorPriority = x[7],
-               CreateHoursPriority = x[8]
+               CreateHoursPriority = x[8],
            });
                 foreach (var o in data)
                 {
@@ -183,7 +183,7 @@ namespace DataAccess
                             c.NumberOfType6PledgedVehicles = TryParseToIntElseZero(c.TryParseValueType6PledgedVehicles);
                             c.NumberOfType7PledgedVehicles = TryParseToIntElseZero(c.TryParseValueType7PledgedVehicles);
 
-                            Contractor newContractor = new Contractor(c.ReferenceNumberBasicInformationPDF, c.UserID, c.CompanyName, c.ManagerName, c.NumberOfType2PledgedVehicles, c.NumberOfType3PledgedVehicles, c.NumberOfType5PledgedVehicles, c.NumberOfType6PledgedVehicles, c.NumberOfType7PledgedVehicles);
+                            Contractor newContractor = new Contractor(c.ReferenceNumberBasicInformationPDF, c.UserID, c.CompanyName, c.ManagerName, c.Hours,c.NumberOfType2PledgedVehicles, c.NumberOfType3PledgedVehicles, c.NumberOfType5PledgedVehicles, c.NumberOfType6PledgedVehicles, c.NumberOfType7PledgedVehicles);
                             listOfContractors.Add(newContractor);
                         }
                     }
