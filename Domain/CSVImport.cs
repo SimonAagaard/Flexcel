@@ -185,7 +185,7 @@ namespace DataAccess
                             c.NumberOfType6PledgedVehicles = TryParseToIntElseZero(c.TryParseValueType6PledgedVehicles);
                             c.NumberOfType7PledgedVehicles = TryParseToIntElseZero(c.TryParseValueType7PledgedVehicles);
 
-                            Contractor newContractor = new Contractor(c.ReferenceNumberBasicInformationPDF, c.UserID, c.CompanyName, c.ManagerName, Convert.ToInt32(c.Hours), c.NumberOfType2PledgedVehicles, c.NumberOfType3PledgedVehicles, c.NumberOfType5PledgedVehicles, c.NumberOfType6PledgedVehicles, c.NumberOfType7PledgedVehicles);
+                            Contractor newContractor = new Contractor(c.ReferenceNumberBasicInformationPDF, c.UserID, c.CompanyName, c.ManagerName, c.NumberOfType2PledgedVehicles, c.NumberOfType3PledgedVehicles, c.NumberOfType5PledgedVehicles, c.NumberOfType6PledgedVehicles, c.NumberOfType7PledgedVehicles, c.Hours);
                             listOfContractors.Add(newContractor);
                         }
                     }

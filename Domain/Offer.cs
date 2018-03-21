@@ -19,7 +19,6 @@ namespace Domain
         public int HoursPriority { get; set; }
         public Contractor Contractor {get;set;}
         public string Hours { get; set; }
-
         public Offer() { }
         public Offer(string referenceNumber, float operationPrice, int routeID, string userID, int routeNumberPriority, int contractorPriority, Contractor contractor, string hours, int HoursPriority ,int requiredVehicleType = 0)
         {
