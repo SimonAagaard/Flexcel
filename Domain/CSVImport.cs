@@ -61,6 +61,7 @@ namespace DataAccess
                UserID = x[5],
                CreateRouteNumberPriority = x[6],
                CreateContractorPriority = x[7],
+               CreateHoursPriority = x[8]
            });
                 foreach (var o in data)
                 {

@@ -112,6 +112,12 @@
                     <GridViewColumn Header="Vedståede V. Type 7"
                                     DisplayMemberBinding="{Binding Contractor.NumberOfType7PledgedVehicles}"
                                     Width="70"></GridViewColumn>
+                    <GridViewColumn Header="Tid til rådighed"
+                                    DisplayMemberBinding="{Binding Hours}"
+                                    Width="70"></GridViewColumn>
+                    <!--<GridViewColumn Header="Pris"
+                                    DisplayMemberBinding="{Binding winningOffers}"
+                                    Width="70"></GridViewColumn>-->
                  
                 </GridView>
             </ListView.View>
