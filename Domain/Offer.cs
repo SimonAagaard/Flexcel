@@ -1,4 +1,6 @@
-﻿namespace Domain
+﻿using System;
+
+namespace Domain
 {
     public class Offer
     {
@@ -11,12 +13,15 @@
         public float DifferenceToNextOffer { get; set; }
         public string CreateRouteNumberPriority { get; set; }
         public string CreateContractorPriority { get; set; }
+        public string CreateHoursPriority { get; set; }
         public int RouteNumberPriority { get; set; }
         public int ContractorPriority { get; set; }
+        public int HoursPriority { get; set; }
         public Contractor Contractor {get;set;}
+        public int Hours { get; set; }
 
         public Offer() { }
-        public Offer(string referenceNumber, float operationPrice, int routeID, string userID, int routeNumberPriority, int contractorPriority, Contractor contractor, int requiredVehicleType = 0)
+        public Offer(string referenceNumber, float operationPrice, int routeID, string userID, int routeNumberPriority, int contractorPriority, Contractor contractor, int hours, int HoursPriority ,int requiredVehicleType = 0)
         {
             this.OfferReferenceNumber = referenceNumber;
             this.OperationPrice = operationPrice;
@@ -26,6 +31,7 @@
             this.ContractorPriority = contractorPriority;
             this.Contractor = contractor;
             this.RequiredVehicleType = requiredVehicleType;
+            this.Hours = hours;
             IsEligible = true;
         }
     }

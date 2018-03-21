@@ -7,6 +7,7 @@ namespace Domain
         public List<RouteNumber> routeNumberList;
         public List<Contractor> contractorList;
         public List<Offer> outputList;
+        public List<Offer> listOfHours;
         public List<Offer> conflictList;
         static readonly ListContainer listContainer = new ListContainer();
 

@@ -63,6 +63,10 @@
       <Project>{7e5a0791-c268-456d-b447-f6bc69cc8e47}</Project>
       <Name>Logic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\View\GUI.csproj">
+      <Project>{1a4d7524-dd94-4b41-9f6c-57a9c9c42e96}</Project>
+      <Name>GUI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

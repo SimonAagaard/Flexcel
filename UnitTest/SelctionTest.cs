@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Logic;
+using Domain;
 
 namespace UnitTest
 {
@@ -9,6 +10,7 @@ namespace UnitTest
     {
         TestDataContainer testData = new TestDataContainer();
         SelectionController selectionController = new SelectionController();
+        DataAccess.CSVImport import;
 
         [TestMethod]
         public void TestMethod_NoInputData()
@@ -21,6 +23,15 @@ namespace UnitTest
         {
             testData.FillListContainer_HappyPath();
             selectionController.SelectWinners();
+        }
+        [TestMethod]
+        public void TestHours()
+        {
+            import = new DataAccess.CSVImport();
+
+            import.ImportOffers(@"C:\Users\Moyum\Desktop\Skabelon til test\RouteNumbers.csv");
+
+            
         }
     }
 }

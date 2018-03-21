@@ -14,11 +14,13 @@ namespace DataAccess
         Encoding encoding;
         public List<Contractor> listOfContractors;
         public List<RouteNumber> listOfRouteNumbers;
+        public List<DateTime> listOfHours;
         public List<Offer> listOfOffers;
         public CSVImport()
         {
             listOfContractors = new List<Contractor>();
             listOfRouteNumbers = new List<RouteNumber>();
+            listOfHours = new List<DateTime>();
             listOfOffers = new List<Offer>();
             encoding = Encoding.GetEncoding("iso-8859-1");
         }
@@ -67,11 +69,12 @@ namespace DataAccess
                     {          
                         o.RouteNumberPriority = TryParseToIntElseZero(o.CreateRouteNumberPriority);
                         o.ContractorPriority = TryParseToIntElseZero(o.CreateContractorPriority);
+                        o.HoursPriority = TryParseToIntElseZero(o.CreateHoursPriority);
                         Contractor contractor = listOfContractors.Find(x => x.UserID == o.UserID);
                         try
                         {
                             o.RequiredVehicleType = (listOfRouteNumbers.Find(r => r.RouteID == o.RouteID)).RequiredVehicleType;
-                            Offer newOffer = new Offer(o.OfferReferenceNumber, o.OperationPrice, o.RouteID, o.UserID, o.RouteNumberPriority, o.ContractorPriority, contractor, o.RequiredVehicleType);
+                            Offer newOffer = new Offer(o.OfferReferenceNumber, o.OperationPrice, o.RouteID, o.UserID, o.RouteNumberPriority, o.ContractorPriority, contractor, o.Hours, o.HoursPriority, o.RequiredVehicleType);
                             listOfOffers.Add(newOffer);
                         }
                         catch
@@ -118,6 +121,7 @@ namespace DataAccess
                 {
                     RouteID = TryParseToIntElseZero(x[0]),
                     RequiredVehicleType = TryParseToIntElseZero(x[1]),
+                    
                 });
                 foreach (var r in data)
                 {
@@ -128,7 +132,6 @@ namespace DataAccess
                         listOfRouteNumbers.Add(r);
                     }
                 }
-
             }
 
 
