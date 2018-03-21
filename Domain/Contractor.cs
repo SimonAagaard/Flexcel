@@ -18,6 +18,7 @@ namespace Domain
         public string UserID { get; set; }
         public string CompanyName { get; set; }
         public string ManagerName { get; set; }  
+        public int Hours { get; set; }
         public int NumberOfType2PledgedVehicles { get; set; }
         public int NumberOfType3PledgedVehicles { get; set; }
         public int NumberOfType5PledgedVehicles { get; set; }
@@ -42,12 +43,13 @@ namespace Domain
         public Contractor(
             string referenceNumberBasicInformationPDF, string userID, string companyName,
             string managerName, int numberOfType2PledgedVehicles, int numberOfType3PledgedVehicles,int numberOfType5PledgedVehicles,
-            int numberOfType6PledgedVehicles, int numberOfType7PledgedVehicles) : this()
+            int numberOfType6PledgedVehicles, int numberOfType7PledgedVehicles, int hours) : this()
         {
             this.ReferenceNumberBasicInformationPDF = referenceNumberBasicInformationPDF;
             this.UserID = userID;
             this.CompanyName = companyName;
             this.ManagerName = managerName;
+            this.Hours = hours;
             this.NumberOfType2PledgedVehicles = numberOfType2PledgedVehicles;
             this.NumberOfType3PledgedVehicles = numberOfType3PledgedVehicles;
             this.NumberOfType5PledgedVehicles = numberOfType5PledgedVehicles;
