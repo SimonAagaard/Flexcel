@@ -10,6 +10,7 @@ namespace DataAccess
 {
     public class CSVImport
     {
+        int h;
 
         Encoding encoding;
         public List<Contractor> listOfContractors;
@@ -161,12 +162,13 @@ namespace DataAccess
                       ReferenceNumberBasicInformationPDF = x[0],
                       ManagerName = x[1],
                       CompanyName = x[2],
-                      UserID = x[3],        
+                      UserID = x[3],
                       TryParseValueType2PledgedVehicles = x[4],
                       TryParseValueType3PledgedVehicles = x[5],
                       TryParseValueType5PledgedVehicles = x[6],
                       TryParseValueType6PledgedVehicles = x[7],
                       TryParseValueType7PledgedVehicles = x[8],
+                      Hours = x[9],
 
                   });
 
@@ -183,7 +185,7 @@ namespace DataAccess
                             c.NumberOfType6PledgedVehicles = TryParseToIntElseZero(c.TryParseValueType6PledgedVehicles);
                             c.NumberOfType7PledgedVehicles = TryParseToIntElseZero(c.TryParseValueType7PledgedVehicles);
 
-                            Contractor newContractor = new Contractor(c.ReferenceNumberBasicInformationPDF, c.UserID, c.CompanyName, c.ManagerName, c.Hours,c.NumberOfType2PledgedVehicles, c.NumberOfType3PledgedVehicles, c.NumberOfType5PledgedVehicles, c.NumberOfType6PledgedVehicles, c.NumberOfType7PledgedVehicles);
+                            Contractor newContractor = new Contractor(c.ReferenceNumberBasicInformationPDF, c.UserID, c.CompanyName, c.ManagerName, Convert.ToInt32(c.Hours), c.NumberOfType2PledgedVehicles, c.NumberOfType3PledgedVehicles, c.NumberOfType5PledgedVehicles, c.NumberOfType6PledgedVehicles, c.NumberOfType7PledgedVehicles);
                             listOfContractors.Add(newContractor);
                         }
                     }

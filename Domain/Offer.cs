@@ -18,10 +18,10 @@ namespace Domain
         public int ContractorPriority { get; set; }
         public int HoursPriority { get; set; }
         public Contractor Contractor {get;set;}
-        public int Hours { get; set; }
+        public string Hours { get; set; }
 
         public Offer() { }
-        public Offer(string referenceNumber, float operationPrice, int routeID, string userID, int routeNumberPriority, int contractorPriority, Contractor contractor, int hours, int HoursPriority ,int requiredVehicleType = 0)
+        public Offer(string referenceNumber, float operationPrice, int routeID, string userID, int routeNumberPriority, int contractorPriority, Contractor contractor, string hours, int HoursPriority ,int requiredVehicleType = 0)
         {
             this.OfferReferenceNumber = referenceNumber;
             this.OperationPrice = operationPrice;

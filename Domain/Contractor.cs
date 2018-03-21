@@ -18,7 +18,7 @@ namespace Domain
         public string UserID { get; set; }
         public string CompanyName { get; set; }
         public string ManagerName { get; set; }  
-        public int Hours { get; set; }
+        public string Hours { get; set; }
         public int NumberOfType2PledgedVehicles { get; set; }
         public int NumberOfType3PledgedVehicles { get; set; }
         public int NumberOfType5PledgedVehicles { get; set; }
@@ -49,12 +49,12 @@ namespace Domain
             this.UserID = userID;
             this.CompanyName = companyName;
             this.ManagerName = managerName;
-            this.Hours = hours;
             this.NumberOfType2PledgedVehicles = numberOfType2PledgedVehicles;
             this.NumberOfType3PledgedVehicles = numberOfType3PledgedVehicles;
             this.NumberOfType5PledgedVehicles = numberOfType5PledgedVehicles;
             this.NumberOfType6PledgedVehicles = numberOfType6PledgedVehicles;
             this.NumberOfType7PledgedVehicles = numberOfType7PledgedVehicles;
+            this.Hours = hours.ToString(); ;
         }
 
         public void AddWonOffer(Offer offer)
