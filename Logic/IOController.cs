@@ -8,6 +8,7 @@ namespace Logic
     {
         List<RouteNumber> routeNumberList;
         List<Contractor> contractorList;
+        List<Offer> listOfHours;
 
         public IOController()
         {
@@ -32,8 +33,9 @@ namespace Logic
             csvImport.ImportOffers(routeNumberFilePath);
             contractorList = csvImport.SendContractorListToContainer();
             routeNumberList = csvImport.SendRouteNumberListToContainer();
+            listOfHours = csvImport.SendHoursListToContainer();
             ListContainer listContainer = ListContainer.GetInstance();
-            listContainer.GetLists(routeNumberList, contractorList);
+            listContainer.GetLists(routeNumberList, contractorList, listOfHours);
         }
     }
 }

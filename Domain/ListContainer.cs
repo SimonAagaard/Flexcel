@@ -23,10 +23,11 @@ namespace Domain
         {
           return listContainer;
         }
-        public void GetLists(List<RouteNumber> routeNumberList, List<Contractor> contractorList)
+        public void GetLists(List<RouteNumber> routeNumberList, List<Contractor> contractorList, List<Offer> listOfHours)
         {
             this.routeNumberList = routeNumberList;
             this.contractorList = contractorList;
+            this.listOfHours = listOfHours;
         }
     }
 }

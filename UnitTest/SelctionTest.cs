@@ -29,8 +29,8 @@ namespace UnitTest
         {
             import = new DataAccess.CSVImport();
 
-            import.ImportOffers(@"C:\Users\Moyum\Desktop\Skabelon til test\RouteNumbers.csv");
-
+            import.ImportOffers(@"C:\Users\Moyum\Desktop\Fynbus\Flexcel_EAL\FakeData_Tests\Tilbud_FakeData.csv");
+            
             
         }
     }

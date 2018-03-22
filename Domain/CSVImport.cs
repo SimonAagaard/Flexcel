@@ -10,18 +10,16 @@ namespace DataAccess
 {
     public class CSVImport
     {
-        int h;
-
         Encoding encoding;
         public List<Contractor> listOfContractors;
         public List<RouteNumber> listOfRouteNumbers;
-        public List<DateTime> listOfHours;
+        public List<Offer> listOfHours;
         public List<Offer> listOfOffers;
         public CSVImport()
         {
             listOfContractors = new List<Contractor>();
             listOfRouteNumbers = new List<RouteNumber>();
-            listOfHours = new List<DateTime>();
+            listOfHours = new List<Offer>();
             listOfOffers = new List<Offer>();
             encoding = Encoding.GetEncoding("iso-8859-1");
         }
@@ -115,7 +113,7 @@ namespace DataAccess
         {
             try
             {
-                string filePath = Environment.ExpandEnvironmentVariables("RouteNumbers.csv");
+                string filePath = Environment.ExpandEnvironmentVariables("RouteNumbers");
                 var data = File.ReadAllLines(filePath, encoding)
                 .Skip(1)
                 .Select(x => x.Split(';'))
@@ -123,7 +121,7 @@ namespace DataAccess
                 {
                     RouteID = TryParseToIntElseZero(x[0]),
                     RequiredVehicleType = TryParseToIntElseZero(x[1]),
-                    
+                    Hours = TryParseToIntElseZero(x[2]),
                 });
                 foreach (var r in data)
                 {
@@ -136,6 +134,44 @@ namespace DataAccess
                 }
             }
 
+
+            catch (IndexOutOfRangeException)
+            {
+                throw new IndexOutOfRangeException("Fejl, er du sikker på du har valgt den rigtige fil?");
+            }
+            catch (FormatException)
+            {
+                throw new FormatException("Fejl, er du sikker på du har valgt den rigtige fil?");
+            }
+            catch (Exception)
+            {
+                throw new Exception("Fejl, filerne blev ikke importeret");
+            }
+        }
+        public void ImportHours() //Should get Timer/Hours from RouteNumbers, but currently doesn't get anything
+        {
+            try
+            {
+                string filePath = Environment.ExpandEnvironmentVariables("RouteNumbers");
+                var data = File.ReadAllLines(filePath, encoding)
+                    .Skip(1)
+                    .Select(x => x.Split(';'))
+                    .Select(x => new Offer
+                    {
+                        RouteID = TryParseToIntElseZero(x[0]),
+                        RequiredVehicleType = TryParseToIntElseZero(x[1]),
+                        Hours = TryParseToIntElseZero(x[2]),
+                    });
+                foreach (var r in data)
+                {
+                    bool doesAlreadyContain = listOfHours.Any(obj => obj.Hours == r.Hours);
+
+                    if (!doesAlreadyContain && r.RouteID != 0 && r.RequiredVehicleType != 0 && r.Hours != 0)
+                    {
+                        listOfHours.Add(r);
+                    }
+                }
+            }
 
             catch (IndexOutOfRangeException)
             {
@@ -211,6 +247,10 @@ namespace DataAccess
         public List<RouteNumber> SendRouteNumberListToContainer()
         {
             return listOfRouteNumbers;
+        }
+        public List<Offer> SendHoursListToContainer()
+        {
+            return listOfHours;
         }
     }
 }
